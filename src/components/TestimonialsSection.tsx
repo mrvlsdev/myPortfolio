@@ -66,7 +66,7 @@ const TestimonialsSection = ({ testimonials = defaultTestimonials }: Props) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="p-6 h-full bg-card hover:shadow-lg transition-shadow duration-300">
+              <Card className="p-6 h-full bg-card/30 backdrop-blur-sm border-primary/10 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
                 <Quote className="w-10 h-10 text-primary/40 mb-4" />
                 <p className="text-lg mb-6 text-card-foreground">
                   {testimonial.content}

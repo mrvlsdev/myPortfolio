@@ -66,12 +66,12 @@ const ProjectShowcase = ({ projects = defaultProjects }: Props) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="overflow-hidden h-full bg-card hover:shadow-xl transition-shadow duration-300">
+              <Card className="overflow-hidden h-full bg-card/30 backdrop-blur-sm border-primary/10 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group">
                 <div className="relative aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
+                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-6 space-y-4">

@@ -5,12 +5,14 @@ interface Props {
   onMouseMove?: (e: React.MouseEvent) => void;
   particleCount?: number;
   backgroundColor?: string;
+  isDarkMode?: boolean;
 }
 
 const ThreeDCanvas = ({
   onMouseMove = () => {},
   particleCount = 50,
   backgroundColor = "bg-slate-900",
+  isDarkMode = true,
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -66,7 +68,9 @@ const ThreeDCanvas = ({
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+        ctx.fillStyle = isDarkMode
+          ? "rgba(255, 255, 255, 0.5)"
+          : "rgba(0, 0, 0, 0.5)";
         ctx.fill();
 
         // Draw connections
@@ -77,7 +81,9 @@ const ThreeDCanvas = ({
 
           if (distance < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 - distance / 500})`;
+            ctx.strokeStyle = isDarkMode
+              ? `rgba(255, 255, 255, ${0.2 - distance / 500})`
+              : `rgba(0, 0, 0, ${0.2 - distance / 500})`;
             ctx.lineWidth = 1;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -94,7 +100,7 @@ const ThreeDCanvas = ({
     return () => {
       window.removeEventListener("resize", resizeCanvas);
     };
-  }, [particleCount]);
+  }, [particleCount, isDarkMode]);
 
   return (
     <motion.div

@@ -32,7 +32,16 @@ const Navbar = ({
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent"
         >
-          Portfolio
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.reload();
+            }}
+            className="cursor-pointer"
+          >
+            Portfolio
+          </a>
         </motion.div>
 
         {/* Navigation Links */}

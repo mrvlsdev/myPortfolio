@@ -13,8 +13,16 @@ const Home = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleThemeToggle = () => {
+    // Add transition class before theme change
+    document.documentElement.classList.add("theme-transition");
+
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle("dark");
+
+    // Remove transition class after theme change
+    setTimeout(() => {
+      document.documentElement.classList.remove("theme-transition");
+    }, 300);
   };
 
   const handleExploreClick = () => {
