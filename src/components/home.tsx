@@ -26,7 +26,14 @@ const Home = () => {
   };
 
   const handleExploreClick = () => {
-    document.getElementById("bio")?.scrollIntoView({ behavior: "smooth" });
+    const bioSection = document.getElementById("bio");
+    if (bioSection) {
+      bioSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
   };
 
   return (
@@ -47,14 +54,14 @@ const Home = () => {
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.8 }}
       >
         <section id="home">
           <HeroSection
             onExploreClick={handleExploreClick}
             backgroundColor={isDarkMode ? "bg-slate-900" : "bg-slate-100"}
-            title="Building the Future of the Web"
-            subtitle="Full-Stack Developer & UI/UX Enthusiast"
+            title="MOUHAMDOU SEYDOU DIOP"
+            subtitle="Full-Stack Developer & UI/UX Engineer"
           />
         </section>
 
@@ -90,7 +97,7 @@ const Home = () => {
           className="py-8 text-center bg-background border-t"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
         >
           <p className="text-muted-foreground">
             © {new Date().getFullYear()} Portfolio. All rights reserved.
